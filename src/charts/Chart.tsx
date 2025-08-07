@@ -1,7 +1,9 @@
 import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
 
-import Highcharts, { type HighchartsOptions, type HTMLDOMElement } from "../lib/index.js";
+// Demonstrates indirect type references
+import Highcharts, { type HighchartsOptions } from '../lib/highcharts.js';
+// or use: import Highcharts, { type HighchartsOptions } from 'highcharts/esm/highcharts.js';
 
 import 'highcharts/esm/highcharts-more.js';
 import 'highcharts/esm/modules/drilldown.js';
@@ -10,7 +12,7 @@ import 'highcharts/esm/modules/drilldown.js';
 
 interface IChartProps {
     callback: Highcharts.ChartLoadCallbackFunction;
-    config: Highcharts.Options;
+    config: HighchartsOptions;
 };
 
 export class Chart extends React.Component<IChartProps> {
@@ -18,7 +20,7 @@ export class Chart extends React.Component<IChartProps> {
 
     // ...implementation
     public createChart(config: HighchartsOptions): void {
-        const options: Highcharts.Options = {
+        const options: HighchartsOptions = {
             ...config,
             chart: {
                 ...config.chart,

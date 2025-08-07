@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-import ErrorBoundary from '../ErrorBoundary';
+import ErrorBoundary from '../ErrorBoundary.js';
 
-export function Chart() {
+export function LoadingChart() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export function Chart() {
     const options: Highcharts.Options = {
         series: [{
             type: 'line',
-            data: [1, 2, 3]
+            data: data
         }]
     };
 
@@ -29,4 +29,4 @@ export function Chart() {
     </ErrorBoundary>;
 }
 
-export default Chart;
+export default LoadingChart;
